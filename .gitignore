@@ -1,0 +1,17 @@
+# Binaries
+*.exe
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Scan output
+results/
+*.jsonl
+
+# Environment / secrets
+.env
+.env.*
