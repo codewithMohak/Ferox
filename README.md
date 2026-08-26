@@ -1,7 +1,7 @@
 # Ferox
 
 <p align="center">
-  <img src="docs/assets/forex (2).png" alt="Ferox — Behavioral Web Reconnaissance & Fuzzing Engine">
+  <img src="docs/assets/forex.png" alt="Ferox — Behavioral Web Reconnaissance & Fuzzing Engine">
 </p>
 
 <p align="center">
