@@ -25,6 +25,20 @@ func worker(
 	}
 }
 
+func processJobsSafely(ctx context.Context, job Job, results chan<- Result) {
+	defer func() {
+		if r := recover(); r != nil {
+			results <- Result{
+				Job: job,
+				Err: fmt.Errorf("panic while processing job: %v", r),
+			}
+		}
+	}()
+
+	result := processJob(ctx, job)
+	results <- result
+}
+
 func processJob(ctx context.Context, job Job) Result {
 	if job.URL == "" {
 		return Result{
