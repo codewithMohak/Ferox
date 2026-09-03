@@ -11,5 +11,6 @@ type Result struct {
 	StatusCode int
 	Length     int64
 	Duration   time.Duration
+	Body       []byte
 	Err        error
 }
