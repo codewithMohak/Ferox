@@ -7,10 +7,13 @@ type Job struct {
 }
 
 type Result struct {
-	Job        Job
-	StatusCode int
-	Length     int64
-	Duration   time.Duration
-	Body       []byte
-	Err        error
+	Job          Job
+	StatusCode   int
+	Length       int64
+	Duration     time.Duration
+	Body         []byte
+	Fingerprint  string
+	IsBlockPage  bool
+	AnomalyScore int
+	Err          error
 }
