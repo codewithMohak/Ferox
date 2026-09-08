@@ -2,15 +2,23 @@ package engine
 
 import (
 	"context"
+	"net/http"
 	"sync"
+
+	"github.com/codewithMohak/Ferox.git/internal/httpclient"
 )
 
 type Config struct {
 	Concurrency int
+	Client      *http.Client
 }
 
 func Run(ctx context.Context, cfg Config, jobs <-chan Job) <-chan Result {
 	results := make(chan Result)
+
+	if cfg.Client == nil {
+		cfg.Client = httpclient.New(httpclient.Options{})
+	}
 
 	var wg sync.WaitGroup
 
@@ -18,7 +26,7 @@ func Run(ctx context.Context, cfg Config, jobs <-chan Job) <-chan Result {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			worker(ctx, jobs, results)
+			worker(ctx, cfg.Client, jobs, results)
 		}()
 	}
 
