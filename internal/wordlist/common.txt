@@ -1,0 +1,10 @@
+admin
+login
+api
+dashboard
+robots.txt
+sitemap.xml
+about
+contact
+test
+random
